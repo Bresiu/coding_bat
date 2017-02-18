@@ -15,7 +15,7 @@ import java.util.TreeSet;
 public class CodingBat {
   public static void main(String[] args) {
     CodingBat codingBat = new CodingBat();
-    System.out.println(codingBat.oneTwo("tcagdo"));
+    System.out.println(codingBat.scoreUp(new String[]{"a", "a", "b", "b"}, new String[]{"a", "c", "b", "c"}));
   }
 
   @SuppressWarnings("all") // diamond operator
@@ -558,10 +558,9 @@ public class CodingBat {
   public int scoreUp(String[] key, String[] answers) {
     int score = 0;
     for (int i = 0; i < key.length; i++) {
-      if (answers[i].equals("?")) {
-      } else if (key[i].equals(answers[i])) {
+      if (key[i].equals(answers[i])) {
         score += 4;
-      } else {
+      } else if (!answers[i].equals("?")) {
         score--;
       }
     }
@@ -834,19 +833,10 @@ public class CodingBat {
     return array;
   }
 
-  public String[] fizzArray(int n) {
-    String[] array = new String[n];
+  public int[] fizzArray(int n) {
+    int[] array = new int[n];
     for (int i = 0; i < array.length; i++) {
-      String element;
-      if (i % 3 == 0 && i % 5 == 0) {
-        element = "FizzBuzz";
-      } else if (i % 3 == 0) {
-        element = "Fizz";
-      } else if (i % 5 == 0) {
-        element = "Buzz";
-      } else {
-        element = String.valueOf(i);
-      }
+      array[i] = i;
     }
     return array;
   }
