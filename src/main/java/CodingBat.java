@@ -15,7 +15,8 @@ import java.util.TreeSet;
 public class CodingBat {
   public static void main(String[] args) {
     CodingBat codingBat = new CodingBat();
-    System.out.println(codingBat.scoreUp(new String[]{"a", "a", "b", "b"}, new String[]{"a", "c", "b", "c"}));
+    System.out.println(
+        codingBat.scoreUp(new String[] {"a", "a", "b", "b"}, new String[] {"a", "c", "b", "c"}));
   }
 
   @SuppressWarnings("all") // diamond operator
@@ -205,7 +206,6 @@ public class CodingBat {
 
   private boolean splitOdd10Helper(int index, int[] nums, int firstSum, int secondSum) {
     if (index >= nums.length) return firstSum % 10 == 0 && secondSum % 2 != 0;
-
     return splitOdd10Helper(index + 1, nums, firstSum + nums[index], secondSum) ||
         splitOdd10Helper(index + 1, nums, firstSum, secondSum + nums[index]);
   }
@@ -216,7 +216,6 @@ public class CodingBat {
 
   private boolean splitArrayHelper(int index, int[] nums, int firstSum, int secondSum) {
     if (index >= nums.length) return firstSum == secondSum;
-
     return splitArrayHelper(index + 1, nums, firstSum + nums[index], secondSum) ||
         splitArrayHelper(index + 1, nums, firstSum, secondSum + nums[index]);
   }
@@ -225,12 +224,12 @@ public class CodingBat {
     if (start >= nums.length) return target == 0;
     int count = 1;
     int tmp = nums[start];
-    for (int i = start + 1; i < nums.length; i++)
+    for (int i = start + 1; i < nums.length; i++) {
       if (nums[i] == nums[start]) {
         tmp += nums[i];
         count++;
       }
-
+    }
     return groupSumClump(start + count, nums, target - tmp) || groupSumClump(start + count, nums,
         target);
   }
@@ -581,7 +580,6 @@ public class CodingBat {
   public int[] copyEndy(int[] nums, int count) {
     int[] result = new int[count];
     int countsAlready = 0;
-
     for (int num : nums) {
       if (isEndy(num)) {
         result[countsAlready] = num;
@@ -601,7 +599,6 @@ public class CodingBat {
   public int[] copyEvens(int[] nums, int count) {
     int[] result = new int[count];
     int countsAlready = 0;
-
     for (int num : nums) {
       if (num % 2 == 0) {
         result[countsAlready] = num;
@@ -695,7 +692,6 @@ public class CodingBat {
         break;
       }
     }
-
     return result;
   }
 
@@ -711,12 +707,10 @@ public class CodingBat {
         result += Integer.parseInt(tmp);
       }
     }
-
     return result;
   }
 
   public String withoutString(String base, String remove) {
-
     return base.replaceAll("(?i)" + remove, "");
   }
 
@@ -737,18 +731,15 @@ public class CodingBat {
 
   @SuppressWarnings("all") // diamond operator
   public String[] mergeTwo(String[] a, String[] b, int n) {
-    SortedSet<String> c = new TreeSet<String>();
-
-    c.addAll(Arrays.asList(a));
-    c.addAll(Arrays.asList(b));
-
-    return Arrays.copyOf(c.toArray(new String[c.size()]), n);
+    SortedSet<String> sortedSet = new TreeSet<String>();
+    sortedSet.addAll(Arrays.asList(a));
+    sortedSet.addAll(Arrays.asList(b));
+    return Arrays.copyOf(sortedSet.toArray(new String[sortedSet.size()]), n);
   }
 
   public int scoresAverage(int[] scores) {
     int avgFirstHalf = this.average(scores, 0, scores.length / 2);
     int avgSecondHalf = this.average(scores, scores.length / 2, scores.length);
-
     return Math.max(avgFirstHalf, avgSecondHalf);
   }
 
@@ -773,7 +764,6 @@ public class CodingBat {
         notCount++;
       }
     }
-    System.out.println(isCount + " " + notCount);
     return isCount == notCount;
   }
 
@@ -787,11 +777,9 @@ public class CodingBat {
   }
 
   public int maxBlock(String str) {
-    System.out.println(str);
     int max = 0;
     for (int i = 0; i < str.length(); i++) {
       char c = str.charAt(i);
-      System.out.println(c);
       int tmpMax = 1;
       for (int j = i + 1; j < str.length(); j++) {
         if (c == str.charAt(j)) {
@@ -805,13 +793,11 @@ public class CodingBat {
         max = tmpMax;
       }
     }
-    System.out.println(max);
     return max;
   }
 
   public boolean gHappy(String str) {
     str = str.replaceAll("[g]{2,}", "");
-    System.out.println(str);
     return !str.contains("g");
   }
 
@@ -870,7 +856,6 @@ public class CodingBat {
   private void test() {
     String test = "DAY=abc!XYZ";
     int result = countYZ(test);
-    System.out.println("result: " + result);
   }
 
   public String oneTwo(String str) {
@@ -883,17 +868,13 @@ public class CodingBat {
 
   public int countYZ(String str) {
     int count = 0;
-
     String[] parts = str.split("[^a-zA-Z']+");
-
     for (String part : parts) {
       String partsLowerCase = part.toLowerCase();
       if (partsLowerCase.endsWith("y") || partsLowerCase.endsWith("z")) {
         count++;
       }
     }
-    System.out.println(Arrays.toString(parts));
-
     return count;
   }
 }
