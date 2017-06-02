@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 /**
  * @author Michal Brewczak
@@ -17,6 +19,69 @@ public class CodingBat {
     CodingBat codingBat = new CodingBat();
     System.out.println(
         codingBat.scoreUp(new String[] {"a", "a", "b", "b"}, new String[] {"a", "c", "b", "c"}));
+  }
+
+  public List<Integer> math1(List<Integer> nums) {
+    return nums.stream().map(num -> (num + 1) * 10).collect(Collectors.toList());
+  }
+
+  public List<String> moreY(List<String> strings) {
+    return strings.stream().map(string -> "y" + string + "y").collect(Collectors.toList());
+  }
+
+  public List<String> copies3(List<String> strings) {
+    return strings.stream().map(string -> string + string + string).collect(Collectors.toList());
+  }
+
+  public List<String> addStar(List<String> strings) {
+    return strings.stream().map(string -> string + "*").collect(Collectors.toList());
+  }
+
+  public List<Integer> square(List<Integer> nums) {
+    return nums.stream().map(integer -> integer*integer).collect(Collectors.toList());
+  }
+
+  public List<Integer> doubling(List<Integer> nums) {
+    return nums.stream().map(integer -> integer*2).collect(Collectors.toList());
+  }
+
+  public Map<String, String> mapAB4(Map<String, String> map) {
+    String aValue = map.get("a");
+    String bValue = map.get("b");
+    if (aValue == null || bValue == null) {
+      return map;
+    }
+    if (aValue.length() != bValue.length()) {
+      String maxABLengthValue = maxABLength(map);
+      map.put("c", maxABLengthValue);
+    } else {
+      map.put("a", "");
+      map.put("b", "");
+    }
+    return map;
+  }
+
+  private String maxABLength(Map<String, String> map) {
+    String aValue = map.get("a");
+    String bValue = map.get("b");
+    return aValue.length() > bValue.length() ? aValue : bValue;
+  }
+
+  public Map<String, String> mapAB3(Map<String, String> map) {
+    if (map.containsKey("a") && !map.containsKey("b")) {
+      map.put("b", map.get("a"));
+    } else if (map.containsKey("b") && !map.containsKey("a")) {
+      map.put("a", map.get("b"));
+    }
+    return map;
+  }
+
+  public Map<String, String> mapAB2(Map<String, String> map) {
+    if (Objects.equals(map.get("a"), map.get("b"))) {
+      map.remove("a");
+      map.remove("b");
+    }
+    return map;
   }
 
   @SuppressWarnings("all") // diamond operator
