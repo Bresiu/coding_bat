@@ -17,8 +17,56 @@ import java.util.stream.Collectors;
 public class CodingBat {
   public static void main(String[] args) {
     CodingBat codingBat = new CodingBat();
-    System.out.println(
-        codingBat.scoreUp(new String[] {"a", "a", "b", "b"}, new String[] {"a", "c", "b", "c"}));
+    System.out.println(codingBat.square56(Arrays.asList(3, 1, 4)));
+  }
+
+  public List<Integer> square56(List<Integer> nums) {
+    return nums.stream()
+        .map(integer -> integer * integer + 10)
+        .filter(integer -> integer % 10 != 5 && integer % 10 != 6)
+        .collect(Collectors.toList());
+  }
+
+  public List<Integer> two2(List<Integer> nums) {
+    return nums.stream()
+        .map(integer -> integer * 2)
+        .filter(integer -> integer % 10 != 2)
+        .collect(Collectors.toList());
+  }
+
+  public List<String> noYY(List<String> strings) {
+    return strings.stream()
+        .map(string -> string + "y")
+        .filter(string -> !string.contains("yy"))
+        .collect(Collectors.toList());
+  }
+
+  public List<String> no34(List<String> strings) {
+    return strings.stream()
+        .filter(string -> string.length() != 3 && string.length() != 4)
+        .collect(Collectors.toList());
+  }
+
+  public List<String> noZ(List<String> strings) {
+    return strings.stream().filter(string -> !string.contains("z")).collect(Collectors.toList());
+  }
+
+  public List<String> noLong(List<String> strings) {
+    return strings.stream().filter(string -> string.length() < 4).collect(Collectors.toList());
+  }
+
+  public List<Integer> noTeen(List<Integer> nums) {
+    return nums.stream()
+        .filter(integer -> integer < 13 || integer > 19)
+        .collect(Collectors.toList());
+  }
+
+  public List<Integer> no9(List<Integer> nums) {
+    return nums.stream().filter(integer -> integer % 10 != 9).collect(Collectors.toList());
+  }
+
+  public List<Integer> noNeg(List<Integer> nums) {
+    return nums.stream().filter(integer -> integer >= 0).collect(Collectors.toList());
   }
 
   public List<String> noX(List<String> strings) {
