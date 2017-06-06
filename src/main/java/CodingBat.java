@@ -21,6 +21,18 @@ public class CodingBat {
         codingBat.scoreUp(new String[] {"a", "a", "b", "b"}, new String[] {"a", "c", "b", "c"}));
   }
 
+  public List<String> noX(List<String> strings) {
+    return strings.stream().map(string -> string.replaceAll("x", "")).collect(Collectors.toList());
+  }
+
+  public List<String> lower(List<String> strings) {
+    return strings.stream().map(String::toLowerCase).collect(Collectors.toList());
+  }
+
+  public List<Integer> rightDigit(List<Integer> nums) {
+    return nums.stream().map(integer -> integer % 10).collect(Collectors.toList());
+  }
+
   public List<Integer> math1(List<Integer> nums) {
     return nums.stream().map(num -> (num + 1) * 10).collect(Collectors.toList());
   }
@@ -38,11 +50,11 @@ public class CodingBat {
   }
 
   public List<Integer> square(List<Integer> nums) {
-    return nums.stream().map(integer -> integer*integer).collect(Collectors.toList());
+    return nums.stream().map(integer -> integer * integer).collect(Collectors.toList());
   }
 
   public List<Integer> doubling(List<Integer> nums) {
-    return nums.stream().map(integer -> integer*2).collect(Collectors.toList());
+    return nums.stream().map(integer -> integer * 2).collect(Collectors.toList());
   }
 
   public Map<String, String> mapAB4(Map<String, String> map) {
